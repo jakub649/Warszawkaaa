@@ -2,137 +2,72 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Warszawkaaa - Lista na wyjazd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Warszawkaaa</title>
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#e07a5f" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
-
     body {
-      font-family: 'Quicksand', sans-serif;
-      background: #fff8f0;
-      color: #333;
+      background: #fdf6f6;
+      font-family: 'Arial Rounded MT Bold', sans-serif;
       padding: 20px;
-      max-width: 600px;
-      margin: auto;
-      transition: background 0.3s, color 0.3s;
+      color: #222;
     }
-    @media (prefers-color-scheme: dark) {
-      body {
-        background: #2e2e2e;
-        color: #ddd;
-      }
-      label { background: #3a3a3acc; }
-    }
+
     h1 {
-      font-size: 26px;
-      margin-bottom: 10px;
       text-align: center;
-      font-weight: 600;
+      font-size: 2em;
+      margin-bottom: 10px;
     }
-    h2 {
-      margin-top: 24px;
-      font-size: 18px;
-      border-bottom: 2px solid #e0dcd5;
-      padding-bottom: 4px;
-      font-weight: 600;
+
+    .category {
+      margin: 25px 0 10px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #444;
     }
+
     label {
-      display: flex;
-      align-items: center;
-      background: #ffffffcc;
-      margin: 6px 0;
-      padding: 8px 12px;
-      border-radius: 12px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      font-size: 16px;
-      transition: background 0.2s;
-      cursor: pointer;
-      user-select: none;
-    }
-    label:hover { background: #f5efe7; }
-    input[type="checkbox"] {
-      transform: scale(1.3);
-      margin-right: 12px;
-      accent-color: #e07a5f;
-      cursor: pointer;
-    }
-    #clear-btn {
       display: block;
-      margin: 20px auto;
-      padding: 12px 20px;
-      background: #e07a5f;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
+      margin: 8px 0;
+      font-size: 1.1em;
       cursor: pointer;
-      transition: background 0.2s;
     }
-    #clear-btn:hover { background: #c65a4e; }
+
+    input[type="checkbox"] {
+      transform: scale(1.2);
+      margin-right: 10px;
+      accent-color: #ff5c8d;
+    }
   </style>
 </head>
 <body>
-  <h1>✅ Lista na Warszawę</h1>
-  <div id="checklist"></div>
-  <button id="clear-btn">Odznacz wszystko</button>
-  <script>
-    const categories = {
-      "👕 Ubrania": [
-        "👕 2x koszulka", "🧥 Bluza / hoodie", "👖 Spodnie "(1x długie, 1x krótkie?)", "🩲 3x bielizna", "🧦 3x skarpety", "👟 Buty (wygodne)", "🩴 Klapki pod prysznic", "🧥 Kurtka / wiatrówka"
-      ],
-      "🔌 Elektronika": [
-        "📱 Telefon", "🔌 Ładowarka", "🔋 Powerbank", "🎧 Słuchawki", "🖥 Kabel USB", "⚡ Adapter/Przejściówka"
-      ],
-      "🧼 Higiena": [
-        "🪥 Szczoteczka", "🧴 Dezodorant", "🚿 Żel / szampon", "🧻 Chust.nał", "🧻 Chust.suche", "🧺 Ręcznik", "🪒 Maszynka", "💊 Leki", "🪞 Lusterko"
-      ],
-      "💄 Kosmetyczka dla niej": [
-        "🧴 Płyn micelarny", "🪮 Szczotka / grzebień", "💄 Podkład/tusz/szminka", "💅 Pilnik/paznokcie", "🧼 Intymne", "🪞 Lusterko"
-      ],
-      "💳 Dokumenty i kasa": [
-        "🪪 Dowód/Legitymacja", "💳 Karta", "🎫 Bilety", "💵 Gotówka", "📝 Potwierdz. rezerwacji"
-      ],
-      "🎒 Inne": [
-        "🎒 Plecak", "🚰 Butelka", "🍬 Guma", "📍 Adres noc.", "🕶️ Okulary", "🧴 Krem UV", "📓 Notatnik", "📱 Ładowarka zegarka"
-      ],
-      "🛠️ Przed wyjazdem": [
-        "⚡ Naładować wszystko", "✅ Sprawdzić wszystko", "🗑️ Wyrzucić śmieci", "🛏️ Ogarnąć pokój", "📤 Wyłączyć prąd"
-      ]
-    };
+  <h1>✅ Warszawkaaa checklist</h1>
 
-    const checklist = document.getElementById("checklist");
-    let index = 0;
-    for (const [cat, items] of Object.entries(categories)) {
-      const h2 = document.createElement("h2");
-      h2.textContent = cat;
-      checklist.appendChild(h2);
-      items.forEach(text => {
-        const label = document.createElement("label");
-        const cb = document.createElement("input");
-        cb.type = "checkbox";
-        cb.id = `cb${index}`;
-        if (localStorage.getItem(cb.id) === "1") cb.checked = true;
-        cb.onchange = () => localStorage.setItem(cb.id, cb.checked ? "1" : "0");
-        label.appendChild(cb);
-        label.append(" " + text);
-        checklist.appendChild(label);
-        index++;
+  <div class="category">📄 Dokumenty</div>
+  <label><input type="checkbox" /> Dowód, legitymacja, karta EKUZ</label>
+  <label><input type="checkbox" /> Bilety, potwierdzenia</label>
+
+  <div class="category">🎒 Rzeczy</div>
+  <label><input type="checkbox" /> Ubrania na 2 dni</label>
+  <label><input type="checkbox" /> Ładowarka, powerbank</label>
+  <label><input type="checkbox" /> Słuchawki</label>
+  <label><input type="checkbox" /> Kosmetyczka</label>
+  <label><input type="checkbox" /> Kosmetyczka (dla dziewczyny)</label>
+
+  <div class="category">💰 Sprawy</div>
+  <label><input type="checkbox" /> Hajs (gotówka + karta)</label>
+  <label><input type="checkbox" /> Naładować wszystko</label>
+  <label><input type="checkbox" /> Posprawdzać wszystko</label>
+
+  <script>
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach((cb, i) => {
+      const key = `cb${i}`;
+      cb.checked = localStorage.getItem(key) === "true";
+      cb.addEventListener("change", () => {
+        localStorage.setItem(key, cb.checked);
       });
-    }
-
-    document.getElementById('clear-btn').onclick = () => {
-      for (let i=0; i<index; i++) {
-        localStorage.removeItem(`cb${i}`);
-        document.getElementById(`cb${i}`).checked = false;
-      }
-    };
-  </script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
-    }
+    });
   </script>
 </body>
 </html>
