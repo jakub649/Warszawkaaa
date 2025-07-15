@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Warszawkaaa checklist</title>
   <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <style>
     body {
       background: #fdf6f6;
@@ -25,16 +28,24 @@
       border-bottom: 2px solid #ff5c8d;
       padding-bottom: 5px;
     }
+    .item {
+      margin: 10px 0;
+    }
     label {
-      display: block;
-      margin: 8px 0;
       font-size: 1.1em;
-      cursor: pointer;
-      user-select: none;
+      display: flex;
+      align-items: center;
+    }
+    .text {
+      flex-grow: 1;
+    }
+    .checkboxes {
+      display: flex;
+      gap: 10px;
+      margin-left: 10px;
     }
     input[type="checkbox"] {
       transform: scale(1.3);
-      margin-right: 12px;
       accent-color: #ff5c8d;
       cursor: pointer;
     }
@@ -44,56 +55,121 @@
   <h1>✅ Warszawkaaa checklist</h1>
 
   <div class="category">📄 Dokumenty</div>
-  <label><input type="checkbox" /> 🪪 Dowód, legitymacja</label>
-  <label><input type="checkbox" /> 🎫 Bilety, potwierdzenia rezerwacji</label>
-  <label><input type="checkbox" /> 💳 Karta płatnicza, gotówka</label>
+  <div class="item">
+    <label><span class="text">🪪 Dowód / legitymacja / EKUZ</span>
+      <span class="checkboxes">
+        <input type="checkbox" id="doc1-prep" />
+        <input type="checkbox" id="doc1-pack" />
+      </span>
+    </label>
+  </div>
+  <div class="item">
+    <label><span class="text">🎫 Bilety, rezerwacje</span>
+      <span class="checkboxes">
+        <input type="checkbox" id="doc2-prep" />
+        <input type="checkbox" id="doc2-pack" />
+      </span>
+    </label>
+  </div>
 
-  <div class="category">🎒 Ubrania</div>
-  <label><input type="checkbox" /> 👕 2x koszulka</label>
-  <label><input type="checkbox" /> 🧥 Bluza / hoodie</label>
-  <label><input type="checkbox" /> 👖 Spodnie (1x długie, 1x krótkie)</label>
-  <label><input type="checkbox" /> 🩲 3x bielizna</label>
-  <label><input type="checkbox" /> 🧦 3x skarpety</label>
-  <label><input type="checkbox" /> 👟 Wygodne buty</label>
-  <label><input type="checkbox" /> 🩴 Klapki pod prysznic</label>
-  <label><input type="checkbox" /> 🧥 Kurtka / wiatrówka</label>
+  <div class="category">👕 Ubrania</div>
+  <div class="item">
+    <label><span class="text">👕 2x koszulka</span>
+      <span class="checkboxes">
+        <input type="checkbox" id="shirt-prep" />
+        <input type="checkbox" id="shirt-pack" />
+      </span>
+    </label>
+  </div>
+  <div class="item">
+    <label><span class="text">🧥 Bluza / hoodie</span>
+      <span class="checkboxes">
+        <input type="checkbox" id="hoodie-prep" />
+        <input type="checkbox" id="hoodie-pack" />
+      </span>
+    </label>
+  </div>
+  <div class="item">
+    <label><span class="text">👖 Spodnie (długie/krótkie)</span>
+      <span class="checkboxes">
+        <input type="checkbox" id="pants-prep" />
+        <input type="checkbox" id="pants-pack" />
+      </span>
+    </label>
+  </div>
 
-  <div class="category">🎧 Elektronika</div>
-  <label><input type="checkbox" /> 🔌 Ładowarka do telefonu</label>
-  <label><input type="checkbox" /> 🔋 Powerbank</label>
-  <label><input type="checkbox" /> 🎧 Słuchawki</label>
-  <label><input type="checkbox" /> 📱 Telefon</label>
+  <div class="category">🧴 Kosmetyki</div>
+  <div class="item">
+    <label><span class="text">🧼 Żel, szczoteczka, pasta</span>
+      <span class="checkboxes">
+        <input type="checkbox" id="toiletries-prep" />
+        <input type="checkbox" id="toiletries-pack" />
+      </span>
+    </label>
+  </div>
+  <div class="item">
+    <label><span class="text">💄 Kosmetyczka dla dziewczyny</span>
+      <span class="checkboxes">
+        <input type="checkbox" id="gfcosmetics-prep" />
+        <input type="checkbox" id="gfcosmetics-pack" />
+      </span>
+    </label>
+  </div>
 
-  <div class="category">🧴 Kosmetyczka</div>
-  <label><input type="checkbox" /> 🧼 Mydło, żel pod prysznic</label>
-  <label><input type="checkbox" /> 🪥 Szczoteczka i pasta do zębów</label>
-  <label><input type="checkbox" /> 🧴 Dezodorant</label>
-  <label><input type="checkbox" /> 💄 Kosmetyczka (dla dziewczyny)</label>
+  <div class="category">🔌 Elektronika</div>
+  <div class="item">
+    <label><span class="text">📱 Telefon</span>
+      <span class="checkboxes">
+        <input type="checkbox" id="phone-prep" />
+        <input type="checkbox" id="phone-pack" />
+      </span>
+    </label>
+  </div>
+  <div class="item">
+    <label><span class="text">🔋 Ładowarka + powerbank</span>
+      <span class="checkboxes">
+        <input type="checkbox" id="charger-prep" />
+        <input type="checkbox" id="charger-pack" />
+      </span>
+    </label>
+  </div>
 
-  <div class="category">📅 Sprawy do załatwienia</div>
-  <label><input type="checkbox" /> 💰 Hajs (gotówka + karta)</label>
-  <label><input type="checkbox" /> 🔋 Naładować wszystko</label>
-  <label><input type="checkbox" /> ✅ Posprawdzać wszystkie rezerwacje</label>
-  <label><input type="checkbox" /> 📞 Sprawdzić godziny otwarcia miejsc</label>
-  <label><input type="checkbox" /> 🧳 Spakować torbę / plecak</label>
+  <div class="category">💼 Gotowe do ogarnięcia</div>
+  <div class="item">
+    <label><span class="text">✅ Sprawdzić rezerwacje</span>
+      <span class="checkboxes">
+        <input type="checkbox" id="check-res-prep" />
+        <input type="checkbox" id="check-res-pack" />
+      </span>
+    </label>
+  </div>
+  <div class="item">
+    <label><span class="text">💰 Gotówka / karta</span>
+      <span class="checkboxes">
+        <input type="checkbox" id="cash-prep" />
+        <input type="checkbox" id="cash-pack" />
+      </span>
+    </label>
+  </div>
 
   <script>
+    // LocalStorage dla każdego checkboxa
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach((cb, i) => {
-      const key = `cb${i}`;
-      cb.checked = localStorage.getItem(key) === "true";
+    checkboxes.forEach(cb => {
+      const id = cb.id;
+      cb.checked = localStorage.getItem(id) === "true";
       cb.addEventListener("change", () => {
-        localStorage.setItem(key, cb.checked);
-        <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').then(() => {
-      console.log('Service Worker zarejestrowany');
-    });
-  }
-</script>
-
+        localStorage.setItem(id, cb.checked);
       });
     });
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(() => {
+        console.log('Service Worker zarejestrowany');
+      });
+    }
   </script>
 </body>
 </html>
