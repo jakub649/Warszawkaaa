@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="manifest" href="manifest.json" />
   <style>
-    body { font-family: sans-serif; padding: 20px; }
+    body { font-family: sans-serif; padding: 20px; background: #f9f9f9; }
+    h1 { font-size: 24px; margin-bottom: 10px; }
+    h2 { margin-top: 20px; font-size: 18px; border-bottom: 1px solid #ccc; padding-bottom: 4px; }
     label { display: block; margin: 6px 0; }
   </style>
 </head>
@@ -15,25 +17,48 @@
   <div id="checklist"></div>
 
   <script>
-    const items = [
-      "Dowód", "Karta", "Bilety", "Szczoteczka", "Dezodorant", "Żel", "Chust.N", "Chust.S",
-      "Ręcznik", "Maszynka", "Leki", "2x koszulka", "Bluza", "Spodnie", "3x bielizna", "3x skarpety", "Buty",
-      "Klapki", "Telefon", "Ładowarka", "Powerbank", "Słuchawki", "Plecak", "Butelka", "Guma", "Adres", "Kurtka",
-      "Okulary", "Ogolić", "Uszy", "Naładować wszystko", "Hajs", "Posprawdzać wszystko", "Wyrzucić śmieci"
-    ];
+    const categories = {
+      "Ubrania": [
+        "2x koszulka", "Bluza", "Spodnie", "3x bielizna", "3x skarpety", "Buty", "Klapki", "Kurtka"
+      ],
+      "Elektronika": [
+        "Telefon", "Ładowarka", "Powerbank", "Słuchawki"
+      ],
+      "Higiena": [
+        "Szczoteczka", "Dezodorant", "Żel", "Chusteczki nawilżane", "Chusteczki suche", "Ręcznik", "Maszynka", "Leki"
+      ],
+      "Dokumenty i kasa": [
+        "Dowód", "Karta", "Bilety", "Hajs"
+      ],
+      "Inne": [
+        "Plecak", "Butelka", "Guma", "Adres", "Okulary"
+      ],
+      "Do zrobienia przed wyjazdem": [
+        "Ogolić", "Wyczyścić uszy", "Naładować wszystko", "Posprawdzać wszystko", "Wyrzucić śmieci"
+      ]
+    };
 
-    const div = document.getElementById("checklist");
-    items.forEach((text, i) => {
-      const label = document.createElement("label");
-      const cb = document.createElement("input");
-      cb.type = "checkbox";
-      cb.id = `cb${i}`;
-      if (localStorage.getItem(`cb${i}`) === "1") cb.checked = true;
-      cb.onchange = () => localStorage.setItem(`cb${i}`, cb.checked ? "1" : "0");
-      label.appendChild(cb);
-      label.appendChild(document.createTextNode(" " + text));
-      div.appendChild(label);
-    });
+    const checklist = document.getElementById("checklist");
+    let i = 0;
+
+    for (const [category, items] of Object.entries(categories)) {
+      const h2 = document.createElement("h2");
+      h2.textContent = category;
+      checklist.appendChild(h2);
+
+      items.forEach(text => {
+        const label = document.createElement("label");
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.id = `cb${i}`;
+        if (localStorage.getItem(`cb${i}`) === "1") cb.checked = true;
+        cb.onchange = () => localStorage.setItem(`cb${i}`, cb.checked ? "1" : "0");
+        label.appendChild(cb);
+        label.appendChild(document.createTextNode(" " + text));
+        checklist.appendChild(label);
+        i++;
+      });
+    }
   </script>
 
   <script>
