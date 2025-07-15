@@ -10,7 +10,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <style>
     body {
-      background: #fdf6f6;
+      background: #fefefe;
       font-family: 'Arial Rounded MT Bold', sans-serif;
       padding: 20px;
       color: #222;
@@ -23,7 +23,7 @@
     .category {
       margin: 25px 0 10px;
       font-size: 1.3em;
-      font-weight: 900;
+      font-weight: bold;
       color: #444;
       border-bottom: 2px solid #ff5c8d;
       padding-bottom: 5px;
@@ -32,7 +32,7 @@
       margin: 10px 0;
     }
     label {
-      font-size: 1.1em;
+      font-size: 1.05em;
       display: flex;
       align-items: center;
     }
@@ -52,108 +52,38 @@
   </style>
 </head>
 <body>
-  <h1>✅ Warszawkaaa checklist</h1>
+  <h1>🎒 Warszawkaaa - lista rzeczy</h1>
 
-  <div class="category">📄 Dokumenty</div>
-  <div class="item">
-    <label><span class="text">🪪 Dowód / legitymacja / EKUZ</span>
-      <span class="checkboxes">
-        <input type="checkbox" id="doc1-prep" />
-        <input type="checkbox" id="doc1-pack" />
-      </span>
-    </label>
-  </div>
-  <div class="item">
-    <label><span class="text">🎫 Bilety, rezerwacje</span>
-      <span class="checkboxes">
-        <input type="checkbox" id="doc2-prep" />
-        <input type="checkbox" id="doc2-pack" />
-      </span>
-    </label>
-  </div>
+  <div class="category">🧍‍♂️ Ubrania</div>
+  <div class="item"><label><span class="text">👕 2x koszulka</span><span class="checkboxes"><input id="koszulka-prep"><input id="koszulka-pack"></span></label></div>
+  <div class="item"><label><span class="text">🧥 Bluza / hoodie</span><span class="checkboxes"><input id="bluza-prep"><input id="bluza-pack"></span></label></div>
+  <div class="item"><label><span class="text">👖 Spodnie (1x długie, 1x krótkie?)</span><span class="checkboxes"><input id="spodnie-prep"><input id="spodnie-pack"></span></label></div>
+  <div class="item"><label><span class="text">🩲 3x bielizna</span><span class="checkboxes"><input id="bielizna-prep"><input id="bielizna-pack"></span></label></div>
+  <div class="item"><label><span class="text">🧦 3x skarpety</span><span class="checkboxes"><input id="skarpetki-prep"><input id="skarpetki-pack"></span></label></div>
+  <div class="item"><label><span class="text">👟 Wygodne buty</span><span class="checkboxes"><input id="buty-prep"><input id="buty-pack"></span></label></div>
+  <div class="item"><label><span class="text">🩴 Klapki pod prysznic</span><span class="checkboxes"><input id="klapki-prep"><input id="klapki-pack"></span></label></div>
+  <div class="item"><label><span class="text">🧥 Kurtka / wiatrówka</span><span class="checkboxes"><input id="kurtka-prep"><input id="kurtka-pack"></span></label></div>
 
-  <div class="category">👕 Ubrania</div>
-  <div class="item">
-    <label><span class="text">👕 2x koszulka</span>
-      <span class="checkboxes">
-        <input type="checkbox" id="shirt-prep" />
-        <input type="checkbox" id="shirt-pack" />
-      </span>
-    </label>
-  </div>
-  <div class="item">
-    <label><span class="text">🧥 Bluza / hoodie</span>
-      <span class="checkboxes">
-        <input type="checkbox" id="hoodie-prep" />
-        <input type="checkbox" id="hoodie-pack" />
-      </span>
-    </label>
-  </div>
-  <div class="item">
-    <label><span class="text">👖 Spodnie (długie/krótkie)</span>
-      <span class="checkboxes">
-        <input type="checkbox" id="pants-prep" />
-        <input type="checkbox" id="pants-pack" />
-      </span>
-    </label>
-  </div>
+  <div class="category">🧼 Kosmetyki</div>
+  <div class="item"><label><span class="text">🪥 Szczoteczka + pasta</span><span class="checkboxes"><input id="szczoteczka-prep"><input id="szczoteczka-pack"></span></label></div>
+  <div class="item"><label><span class="text">🧴 Żel pod prysznic / szampon</span><span class="checkboxes"><input id="zel-prep"><input id="zel-pack"></span></label></div>
+  <div class="item"><label><span class="text">🧴 Dezodorant</span><span class="checkboxes"><input id="dezodorant-prep"><input id="dezodorant-pack"></span></label></div>
+  <div class="item"><label><span class="text">🧴 Kosmetyczka dla dziewczyny</span><span class="checkboxes"><input id="gf-kosmetyki-prep"><input id="gf-kosmetyki-pack"></span></label></div>
+  <div class="item"><label><span class="text">🧻 Chusteczki, papier</span><span class="checkboxes"><input id="chusteczki-prep"><input id="chusteczki-pack"></span></label></div>
 
-  <div class="category">🧴 Kosmetyki</div>
-  <div class="item">
-    <label><span class="text">🧼 Żel, szczoteczka, pasta</span>
-      <span class="checkboxes">
-        <input type="checkbox" id="toiletries-prep" />
-        <input type="checkbox" id="toiletries-pack" />
-      </span>
-    </label>
-  </div>
-  <div class="item">
-    <label><span class="text">💄 Kosmetyczka dla dziewczyny</span>
-      <span class="checkboxes">
-        <input type="checkbox" id="gfcosmetics-prep" />
-        <input type="checkbox" id="gfcosmetics-pack" />
-      </span>
-    </label>
-  </div>
+  <div class="category">📱 Elektronika</div>
+  <div class="item"><label><span class="text">📱 Telefon</span><span class="checkboxes"><input id="tel-prep"><input id="tel-pack"></span></label></div>
+  <div class="item"><label><span class="text">🔌 Ładowarka do telefonu</span><span class="checkboxes"><input id="ladowarka-prep"><input id="ladowarka-pack"></span></label></div>
+  <div class="item"><label><span class="text">🔋 Powerbank</span><span class="checkboxes"><input id="powerbank-prep"><input id="powerbank-pack"></span></label></div>
+  <div class="item"><label><span class="text">🎧 Słuchawki</span><span class="checkboxes"><input id="sluchawki-prep"><input id="sluchawki-pack"></span></label></div>
 
-  <div class="category">🔌 Elektronika</div>
-  <div class="item">
-    <label><span class="text">📱 Telefon</span>
-      <span class="checkboxes">
-        <input type="checkbox" id="phone-prep" />
-        <input type="checkbox" id="phone-pack" />
-      </span>
-    </label>
-  </div>
-  <div class="item">
-    <label><span class="text">🔋 Ładowarka + powerbank</span>
-      <span class="checkboxes">
-        <input type="checkbox" id="charger-prep" />
-        <input type="checkbox" id="charger-pack" />
-      </span>
-    </label>
-  </div>
-
-  <div class="category">💼 Gotowe do ogarnięcia</div>
-  <div class="item">
-    <label><span class="text">✅ Sprawdzić rezerwacje</span>
-      <span class="checkboxes">
-        <input type="checkbox" id="check-res-prep" />
-        <input type="checkbox" id="check-res-pack" />
-      </span>
-    </label>
-  </div>
-  <div class="item">
-    <label><span class="text">💰 Gotówka / karta</span>
-      <span class="checkboxes">
-        <input type="checkbox" id="cash-prep" />
-        <input type="checkbox" id="cash-pack" />
-      </span>
-    </label>
-  </div>
+  <div class="category">📄 Dokumenty & inne</div>
+  <div class="item"><label><span class="text">🪪 Dowód, legitymacja, EKUZ</span><span class="checkboxes"><input id="dokumenty-prep"><input id="dokumenty-pack"></span></label></div>
+  <div class="item"><label><span class="text">💳 Karta / gotówka</span><span class="checkboxes"><input id="hajs-prep"><input id="hajs-pack"></span></label></div>
+  <div class="item"><label><span class="text">🎫 Bilety, rezerwacje (PDF)</span><span class="checkboxes"><input id="bilety-prep"><input id="bilety-pack"></span></label></div>
+  <div class="item"><label><span class="text">🧠 Sprawdzić wszystko jeszcze raz</span><span class="checkboxes"><input id="sprawdzenie-prep"><input id="sprawdzenie-pack"></span></label></div>
 
   <script>
-    // LocalStorage dla każdego checkboxa
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(cb => {
       const id = cb.id;
