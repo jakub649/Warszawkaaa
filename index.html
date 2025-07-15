@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Warszawkaaa - Lista na wyjazd</title>
   <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#e07a5f" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
 
@@ -15,27 +16,28 @@
       padding: 20px;
       max-width: 600px;
       margin: auto;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      transition: background 0.3s, color 0.3s;
     }
-
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #2e2e2e;
+        color: #ddd;
+      }
+      label { background: #3a3a3acc; }
+    }
     h1 {
       font-size: 26px;
       margin-bottom: 10px;
-      color: #444;
       text-align: center;
       font-weight: 600;
     }
-
     h2 {
       margin-top: 24px;
       font-size: 18px;
       border-bottom: 2px solid #e0dcd5;
       padding-bottom: 4px;
-      color: #666;
       font-weight: 600;
     }
-
     label {
       display: flex;
       align-items: center;
@@ -49,68 +51,87 @@
       cursor: pointer;
       user-select: none;
     }
-
-    label:hover {
-      background: #f5efe7;
-    }
-
+    label:hover { background: #f5efe7; }
     input[type="checkbox"] {
       transform: scale(1.3);
       margin-right: 12px;
       accent-color: #e07a5f;
       cursor: pointer;
     }
+    #clear-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 20px;
+      background: #e07a5f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #clear-btn:hover { background: #c65a4e; }
   </style>
 </head>
 <body>
   <h1>✅ Lista na Warszawę</h1>
   <div id="checklist"></div>
-
+  <button id="clear-btn">Odznacz wszystko</button>
   <script>
     const categories = {
       "👕 Ubrania": [
-        "👕 2x koszulka", "🧥 Bluza / hoodie", "👖 Spodnie (1x długie, 1x krótkie?)", "🩲 3x bielizna", "🧦 3x skarpety", "👟 Buty (wygodne)", "🩴 Klapki pod prysznic", "🧥 Kurtka / wiatrówka"
+        "👕 2x koszulka", "🧥 Bluza / hoodie", "👖 Spodnie "(1x długie, 1x krótkie?)", "🩲 3x bielizna", "🧦 3x skarpety", "👟 Buty (wygodne)", "🩴 Klapki pod prysznic", "🧥 Kurtka / wiatrówka"
       ],
       "🔌 Elektronika": [
-        "📱 Telefon", "🔌 Ładowarka do telefonu", "🔋 Powerbank naładowany", "🎧 Słuchawki (BT / kabel)", "🖥 Kabel USB", "⚡ Przejściówki / adaptery jeśli trzeba"
+        "📱 Telefon", "🔌 Ładowarka", "🔋 Powerbank", "🎧 Słuchawki", "🖥 Kabel USB", "⚡ Adapter/Przejściówka"
       ],
       "🧼 Higiena": [
-        "🪥 Szczoteczka do zębów", "🧴 Dezodorant", "🚿 Żel pod prysznic / szampon", "🧻 Chusteczki nawilżane", "🧻 Chusteczki suche", "🧺 Ręcznik (mały i szybkoschnący)", "🪒 Maszynka do golenia / trymer", "💊 Leki (np. na ból, alergie)", "🪞 Lusterko małe (jeśli używasz)"
+        "🪥 Szczoteczka", "🧴 Dezodorant", "🚿 Żel / szampon", "🧻 Chust.nał", "🧻 Chust.suche", "🧺 Ręcznik", "🪒 Maszynka", "💊 Leki", "🪞 Lusterko"
       ],
       "💄 Kosmetyczka dla niej": [
-        "🧴 Płyn micelarny / demakijaż", "🪮 Szczotka / grzebień", "💄 Makijaż (podkład, tusz, szminka itp.)", "💅 Zestaw paznokcie / pilnik", "💊 Tabletki / leki", "🧼 Żel intymny / podpaski / tampony", "🪞 Lusterko"
+        "🧴 Płyn micelarny", "🪮 Szczotka / grzebień", "💄 Podkład/tusz/szminka", "💅 Pilnik/paznokcie", "🧼 Intymne", "🪞 Lusterko"
       ],
       "💳 Dokumenty i kasa": [
-        "🪪 Dowód osobisty / Legitymacja", "💳 Karta płatnicza", "🎫 Bilety (kolejowe, wejściówki)", "💵 Gotówka (min. 100–200 zł)", "📝 Potwierdzenia rezerwacji (screeny!)"
+        "🪪 Dowód/Legitymacja", "💳 Karta", "🎫 Bilety", "💵 Gotówka", "📝 Potwierdz. rezerwacji"
       ],
       "🎒 Inne": [
-        "🎒 Plecak / torba", "🚰 Butelka na wodę", "🍬 Guma / coś do żucia", "📍 Adres miejsca noclegu", "🕶️ Okulary przeciwsłoneczne / korekcyjne", "🧴 Krem z filtrem", "📓 Notatnik / długopis", "📱 Ładowarka do zegarka / Apple Watcha"
+        "🎒 Plecak", "🚰 Butelka", "🍬 Guma", "📍 Adres noc.", "🕶️ Okulary", "🧴 Krem UV", "📓 Notatnik", "📱 Ładowarka zegarka"
       ],
-      "🛠️ Do zrobienia przed wyjazdem": [
-        "⚡ Naładować wszystko do pełna", "✅ Posprawdzać wszystko po raz ostatni", "🗑️ Wyrzucić śmieci", "🛏️ Ogarnąć łóżko / pokój", "📤 Wyłączyć komputer / prąd (jeśli trzeba)"
+      "🛠️ Przed wyjazdem": [
+        "⚡ Naładować wszystko", "✅ Sprawdzić wszystko", "🗑️ Wyrzucić śmieci", "🛏️ Ogarnąć pokój", "📤 Wyłączyć prąd"
       ]
     };
 
     const checklist = document.getElementById("checklist");
-    let i = 0;
-
-    for (const [category, items] of Object.entries(categories)) {
+    let index = 0;
+    for (const [cat, items] of Object.entries(categories)) {
       const h2 = document.createElement("h2");
-      h2.textContent = category;
+      h2.textContent = cat;
       checklist.appendChild(h2);
-
       items.forEach(text => {
         const label = document.createElement("label");
         const cb = document.createElement("input");
         cb.type = "checkbox";
-        cb.id = `cb${i}`;
-        if (localStorage.getItem(`cb${i}`) === "1") cb.checked = true;
-        cb.onchange = () => localStorage.setItem(`cb${i}`, cb.checked ? "1" : "0");
+        cb.id = `cb${index}`;
+        if (localStorage.getItem(cb.id) === "1") cb.checked = true;
+        cb.onchange = () => localStorage.setItem(cb.id, cb.checked ? "1" : "0");
         label.appendChild(cb);
-        label.appendChild(document.createTextNode(text));
+        label.append(" " + text);
         checklist.appendChild(label);
-        i++;
+        index++;
       });
+    }
+
+    document.getElementById('clear-btn').onclick = () => {
+      for (let i=0; i<index; i++) {
+        localStorage.removeItem(`cb${i}`);
+        document.getElementById(`cb${i}`).checked = false;
+      }
+    };
+  </script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
     }
   </script>
 </body>
