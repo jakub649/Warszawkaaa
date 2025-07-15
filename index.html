@@ -1,71 +1,23 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-  <meta charset="UTF-8" />
-  <title>Warszawkaaa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="manifest" href="manifest.json" />
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px; background: #f0f0f0; }
-    h1 { font-size: 24px; margin-bottom: 10px; }
-    h2 { margin-top: 20px; font-size: 18px; border-bottom: 1px solid #ccc; padding-bottom: 4px; }
-    label { display: block; margin: 6px 0; font-size: 16px; }
-    input[type="checkbox"] { transform: scale(1.2); margin-right: 10px; }
-  </style>
-</head>
-<body>
-  <h1>✅ Lista na Warszawę</h1>
-  <div id="checklist"></div>
-
-  <script>
-    const categories = {
-      "👕 Ubrania": [
-        "👕 2x koszulka", "🧥 Bluza", "👖 Spodnie", "🩲 3x bielizna", "🧦 3x skarpety", "👟 Buty", "🩴 Klapki", "🧥 Kurtka"
-      ],
-      "🔌 Elektronika": [
-        "📱 Telefon", "🔌 Ładowarka", "🔋 Powerbank", "🎧 Słuchawki"
-      ],
-      "🧼 Higiena": [
-        "🪥 Szczoteczka", "🧴 Dezodorant", "🚿 Żel", "🧻 Chusteczki nawilżane", "🧻 Chusteczki suche", "🧺 Ręcznik", "🪒 Maszynka", "💊 Leki"
-      ],
-      "💳 Dokumenty i kasa": [
-        "🪪 Dowód", "💳 Karta", "🎫 Bilety", "💵 Hajs"
-      ],
-      "🎒 Inne": [
-        "🎒 Plecak", "🚰 Butelka", "🍬 Guma", "📍 Adres", "🕶️ Okulary"
-      ],
-      "🛠️ Do zrobienia przed wyjazdem": [
-        "🪒 Ogolić", "🧏‍♂️ Wyczyścić uszy", "⚡ Naładować wszystko", "✅ Posprawdzać wszystko", "🗑️ Wyrzucić śmieci"
-      ]
-    };
-
-    const checklist = document.getElementById("checklist");
-    let i = 0;
-
-    for (const [category, items] of Object.entries(categories)) {
-      const h2 = document.createElement("h2");
-      h2.textContent = category;
-      checklist.appendChild(h2);
-
-      items.forEach(text => {
-        const label = document.createElement("label");
-        const cb = document.createElement("input");
-        cb.type = "checkbox";
-        cb.id = `cb${i}`;
-        if (localStorage.getItem(`cb${i}`) === "1") cb.checked = true;
-        cb.onchange = () => localStorage.setItem(`cb${i}`, cb.checked ? "1" : "0");
-        label.appendChild(cb);
-        label.appendChild(document.createTextNode(text));
-        checklist.appendChild(label);
-        i++;
-      });
-    }
-  </script>
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
-    }
-  </script>
-</body>
-</html>
+const categories = {
+  "👕 Ubrania": [
+    "👕 2x koszulka", "🧥 Bluza / hoodie", "👖 Spodnie (1x długie, 1x krótkie?)", "🩲 3x bielizna", "🧦 3x skarpety", "👟 Buty (wygodne)", "🩴 Klapki pod prysznic", "🧥 Kurtka / wiatrówka"
+  ],
+  "🔌 Elektronika": [
+    "📱 Telefon", "🔌 Ładowarka do telefonu", "🔋 Powerbank naładowany", "🎧 Słuchawki (BT / kabel)", "🖥 Kabel USB", "⚡ Przejściówki / adaptery jeśli trzeba"
+  ],
+  "🧼 Higiena": [
+    "🪥 Szczoteczka do zębów", "🧴 Dezodorant", "🚿 Żel pod prysznic / szampon", "🧻 Chusteczki nawilżane", "🧻 Chusteczki suche", "🧺 Ręcznik (mały i szybkoschnący)", "🪒 Maszynka do golenia / trymer", "💊 Leki (np. na ból, alergie)", "🪞 Lusterko małe (jeśli używasz)"
+  ],
+  "💄 Kosmetyczka dla niej": [
+    "🧴 Płyn micelarny / demakijaż", "🪮 Szczotka / grzebień", "💄 Makijaż (podkład, tusz, szminka itp.)", "💅 Zestaw paznokcie / pilnik", "💊 Tabletki / leki", "🧼 Żel intymny / podpaski / tampony", "🪞 Lusterko"
+  ],
+  "💳 Dokumenty i kasa": [
+    "🪪 Dowód osobisty / Legitymacja", "💳 Karta płatnicza", "🎫 Bilety (kolejowe, wejściówki)", "💵 Gotówka (min. 100–200 zł)", "📝 Potwierdzenia rezerwacji (screeny!)"
+  ],
+  "🎒 Inne": [
+    "🎒 Plecak / torba", "🚰 Butelka na wodę", "🍬 Guma / coś do żucia", "📍 Adres miejsca noclegu", "🕶️ Okulary przeciwsłoneczne / korekcyjne", "🧴 Krem z filtrem", "📓 Notatnik / długopis", "📱 Ładowarka do zegarka / Apple Watcha"
+  ],
+  "🛠️ Do zrobienia przed wyjazdem": [
+    "⚡ Naładować wszystko do pełna", "✅ Posprawdzać wszystko po raz ostatni", "🗑️ Wyrzucić śmieci", "🛏️ Ogarnąć łóżko / pokój", "📤 Wyłączyć komputer / prąd (jeśli trzeba)"
+  ]
+};
