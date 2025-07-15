@@ -2,8 +2,8 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Warszawkaaa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Warszawkaaa checklist</title>
   <link rel="manifest" href="manifest.json" />
   <style>
     body {
@@ -12,31 +12,31 @@
       padding: 20px;
       color: #222;
     }
-
     h1 {
       text-align: center;
       font-size: 2em;
       margin-bottom: 10px;
     }
-
     .category {
       margin: 25px 0 10px;
-      font-size: 1.2em;
-      font-weight: bold;
+      font-size: 1.3em;
+      font-weight: 900;
       color: #444;
+      border-bottom: 2px solid #ff5c8d;
+      padding-bottom: 5px;
     }
-
     label {
       display: block;
       margin: 8px 0;
       font-size: 1.1em;
       cursor: pointer;
+      user-select: none;
     }
-
     input[type="checkbox"] {
-      transform: scale(1.2);
-      margin-right: 10px;
+      transform: scale(1.3);
+      margin-right: 12px;
       accent-color: #ff5c8d;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -44,20 +44,38 @@
   <h1>✅ Warszawkaaa checklist</h1>
 
   <div class="category">📄 Dokumenty</div>
-  <label><input type="checkbox" /> Dowód, legitymacja, karta EKUZ</label>
-  <label><input type="checkbox" /> Bilety, potwierdzenia</label>
+  <label><input type="checkbox" /> 🪪 Dowód, legitymacja</label>
+  <label><input type="checkbox" /> 🎫 Bilety, potwierdzenia rezerwacji</label>
+  <label><input type="checkbox" /> 💳 Karta płatnicza, gotówka</label>
 
-  <div class="category">🎒 Rzeczy</div>
-  <label><input type="checkbox" /> Ubrania na 2 dni</label>
-  <label><input type="checkbox" /> Ładowarka, powerbank</label>
-  <label><input type="checkbox" /> Słuchawki</label>
-  <label><input type="checkbox" /> Kosmetyczka</label>
-  <label><input type="checkbox" /> Kosmetyczka (dla dziewczyny)</label>
+  <div class="category">🎒 Ubrania</div>
+  <label><input type="checkbox" /> 👕 2x koszulka</label>
+  <label><input type="checkbox" /> 🧥 Bluza / hoodie</label>
+  <label><input type="checkbox" /> 👖 Spodnie (1x długie, 1x krótkie)</label>
+  <label><input type="checkbox" /> 🩲 3x bielizna</label>
+  <label><input type="checkbox" /> 🧦 3x skarpety</label>
+  <label><input type="checkbox" /> 👟 Wygodne buty</label>
+  <label><input type="checkbox" /> 🩴 Klapki pod prysznic</label>
+  <label><input type="checkbox" /> 🧥 Kurtka / wiatrówka</label>
 
-  <div class="category">💰 Sprawy</div>
-  <label><input type="checkbox" /> Hajs (gotówka + karta)</label>
-  <label><input type="checkbox" /> Naładować wszystko</label>
-  <label><input type="checkbox" /> Posprawdzać wszystko</label>
+  <div class="category">🎧 Elektronika</div>
+  <label><input type="checkbox" /> 🔌 Ładowarka do telefonu</label>
+  <label><input type="checkbox" /> 🔋 Powerbank</label>
+  <label><input type="checkbox" /> 🎧 Słuchawki</label>
+  <label><input type="checkbox" /> 📱 Telefon</label>
+
+  <div class="category">🧴 Kosmetyczka</div>
+  <label><input type="checkbox" /> 🧼 Mydło, żel pod prysznic</label>
+  <label><input type="checkbox" /> 🪥 Szczoteczka i pasta do zębów</label>
+  <label><input type="checkbox" /> 🧴 Dezodorant</label>
+  <label><input type="checkbox" /> 💄 Kosmetyczka (dla dziewczyny)</label>
+
+  <div class="category">📅 Sprawy do załatwienia</div>
+  <label><input type="checkbox" /> 💰 Hajs (gotówka + karta)</label>
+  <label><input type="checkbox" /> 🔋 Naładować wszystko</label>
+  <label><input type="checkbox" /> ✅ Posprawdzać wszystkie rezerwacje</label>
+  <label><input type="checkbox" /> 📞 Sprawdzić godziny otwarcia miejsc</label>
+  <label><input type="checkbox" /> 🧳 Spakować torbę / plecak</label>
 
   <script>
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
