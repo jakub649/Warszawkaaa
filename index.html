@@ -1,90 +1,97 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Warszawkaaa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Warszawkaaa - Lista na wyjazd</title>
   <link rel="manifest" href="manifest.json" />
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
 
-  body {
-    font-family: 'Quicksand', sans-serif;
-    background: #fff8f0;
-    color: #333;
-    padding: 20px;
-    max-width: 600px;
-    margin: auto;
-  }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: #fff8f0;
+      color: #333;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-  h1 {
-    font-size: 26px;
-    margin-bottom: 10px;
-    color: #444;
-    text-align: center;
-  }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      color: #444;
+      text-align: center;
+      font-weight: 600;
+    }
 
-  h2 {
-    margin-top: 24px;
-    font-size: 18px;
-    border-bottom: 2px solid #e0dcd5;
-    padding-bottom: 4px;
-    color: #666;
-  }
+    h2 {
+      margin-top: 24px;
+      font-size: 18px;
+      border-bottom: 2px solid #e0dcd5;
+      padding-bottom: 4px;
+      color: #666;
+      font-weight: 600;
+    }
 
-  label {
-    display: flex;
-    align-items: center;
-    background: #ffffffcc;
-    margin: 6px 0;
-    padding: 8px 12px;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    font-size: 16px;
-    transition: background 0.2s;
-  }
+    label {
+      display: flex;
+      align-items: center;
+      background: #ffffffcc;
+      margin: 6px 0;
+      padding: 8px 12px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 16px;
+      transition: background 0.2s;
+      cursor: pointer;
+      user-select: none;
+    }
 
-  label:hover {
-    background: #f5efe7;
-  }
+    label:hover {
+      background: #f5efe7;
+    }
 
-  input[type="checkbox"] {
-    transform: scale(1.3);
-    margin-right: 12px;
-    accent-color: #e07a5f;
-  }
-</style>
-
+    input[type="checkbox"] {
+      transform: scale(1.3);
+      margin-right: 12px;
+      accent-color: #e07a5f;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <h1>✅ Lista na Warszawę</h1>
   <div id="checklist"></div>
 
-  <script> 
+  <script>
     const categories = {
-  "👕 Ubrania": [
-    "👕 2x koszulka", "🧥 Bluza / hoodie", "👖 Spodnie (1x długie, 1x krótkie?)", "🩲 3x bielizna", "🧦 3x skarpety", "👟 Buty (wygodne)", "🩴 Klapki pod prysznic", "🧥 Kurtka / wiatrówka"
-  ],
-  "🔌 Elektronika": [
-    "📱 Telefon", "🔌 Ładowarka do telefonu", "🔋 Powerbank naładowany", "🎧 Słuchawki (BT / kabel)", "🖥 Kabel USB", "⚡ Przejściówki / adaptery jeśli trzeba"
-  ],
-  "🧼 Higiena": [
-    "🪥 Szczoteczka do zębów", "🧴 Dezodorant", "🚿 Żel pod prysznic / szampon", "🧻 Chusteczki nawilżane", "🧻 Chusteczki suche", "🧺 Ręcznik (mały i szybkoschnący)", "🪒 Maszynka do golenia / trymer", "💊 Leki (np. na ból, alergie)", "🪞 Lusterko małe (jeśli używasz)"
-  ],
-  "💄 Kosmetyczka dla niej": [
-    "🧴 Płyn micelarny / demakijaż", "🪮 Szczotka / grzebień", "💄 Makijaż (podkład, tusz, szminka itp.)", "💅 Zestaw paznokcie / pilnik", "💊 Tabletki / leki", "🧼 Żel intymny / podpaski / tampony", "🪞 Lusterko"
-  ],
-  "💳 Dokumenty i kasa": [
-    "🪪 Dowód osobisty / Legitymacja", "💳 Karta płatnicza", "🎫 Bilety (kolejowe, wejściówki)", "💵 Gotówka (min. 100–200 zł)", "📝 Potwierdzenia rezerwacji (screeny!)"
-  ],
-  "🎒 Inne": [
-    "🎒 Plecak / torba", "🚰 Butelka na wodę", "🍬 Guma / coś do żucia", "📍 Adres miejsca noclegu", "🕶️ Okulary przeciwsłoneczne / korekcyjne", "🧴 Krem z filtrem", "📓 Notatnik / długopis", "📱 Ładowarka do zegarka / Apple Watcha"
-  ],
-  "🛠️ Do zrobienia przed wyjazdem": [
-    "⚡ Naładować wszystko do pełna", "✅ Posprawdzać wszystko po raz ostatni", "🗑️ Wyrzucić śmieci", "🛏️ Ogarnąć łóżko / pokój", "📤 Wyłączyć komputer / prąd (jeśli trzeba)"
-  ]
-};
-const checklist = document.getElementById("checklist");
+      "👕 Ubrania": [
+        "👕 2x koszulka", "🧥 Bluza / hoodie", "👖 Spodnie (1x długie, 1x krótkie?)", "🩲 3x bielizna", "🧦 3x skarpety", "👟 Buty (wygodne)", "🩴 Klapki pod prysznic", "🧥 Kurtka / wiatrówka"
+      ],
+      "🔌 Elektronika": [
+        "📱 Telefon", "🔌 Ładowarka do telefonu", "🔋 Powerbank naładowany", "🎧 Słuchawki (BT / kabel)", "🖥 Kabel USB", "⚡ Przejściówki / adaptery jeśli trzeba"
+      ],
+      "🧼 Higiena": [
+        "🪥 Szczoteczka do zębów", "🧴 Dezodorant", "🚿 Żel pod prysznic / szampon", "🧻 Chusteczki nawilżane", "🧻 Chusteczki suche", "🧺 Ręcznik (mały i szybkoschnący)", "🪒 Maszynka do golenia / trymer", "💊 Leki (np. na ból, alergie)", "🪞 Lusterko małe (jeśli używasz)"
+      ],
+      "💄 Kosmetyczka dla niej": [
+        "🧴 Płyn micelarny / demakijaż", "🪮 Szczotka / grzebień", "💄 Makijaż (podkład, tusz, szminka itp.)", "💅 Zestaw paznokcie / pilnik", "💊 Tabletki / leki", "🧼 Żel intymny / podpaski / tampony", "🪞 Lusterko"
+      ],
+      "💳 Dokumenty i kasa": [
+        "🪪 Dowód osobisty / Legitymacja", "💳 Karta płatnicza", "🎫 Bilety (kolejowe, wejściówki)", "💵 Gotówka (min. 100–200 zł)", "📝 Potwierdzenia rezerwacji (screeny!)"
+      ],
+      "🎒 Inne": [
+        "🎒 Plecak / torba", "🚰 Butelka na wodę", "🍬 Guma / coś do żucia", "📍 Adres miejsca noclegu", "🕶️ Okulary przeciwsłoneczne / korekcyjne", "🧴 Krem z filtrem", "📓 Notatnik / długopis", "📱 Ładowarka do zegarka / Apple Watcha"
+      ],
+      "🛠️ Do zrobienia przed wyjazdem": [
+        "⚡ Naładować wszystko do pełna", "✅ Posprawdzać wszystko po raz ostatni", "🗑️ Wyrzucić śmieci", "🛏️ Ogarnąć łóżko / pokój", "📤 Wyłączyć komputer / prąd (jeśli trzeba)"
+      ]
+    };
+
+    const checklist = document.getElementById("checklist");
     let i = 0;
 
     for (const [category, items] of Object.entries(categories)) {
@@ -104,12 +111,6 @@ const checklist = document.getElementById("checklist");
         checklist.appendChild(label);
         i++;
       });
-    }
-  </script>
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
     }
   </script>
 </body>
