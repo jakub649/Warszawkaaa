@@ -6,10 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="manifest" href="manifest.json" />
   <style>
-    body { font-family: sans-serif; padding: 20px; background: #f9f9f9; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px; background: #f0f0f0; }
     h1 { font-size: 24px; margin-bottom: 10px; }
     h2 { margin-top: 20px; font-size: 18px; border-bottom: 1px solid #ccc; padding-bottom: 4px; }
-    label { display: block; margin: 6px 0; }
+    label { display: block; margin: 6px 0; font-size: 16px; }
+    input[type="checkbox"] { transform: scale(1.2); margin-right: 10px; }
   </style>
 </head>
 <body>
@@ -18,21 +19,24 @@
 
   <script>
     const categories = {
-      "Ubrania": [
-        "2x koszulka", "Bluza", "Spodnie", "3x bielizna", "3x skarpety", "Buty", "Klapki", "Kurtka"
+      "👕 Ubrania": [
+        "👕 2x koszulka", "🧥 Bluza", "👖 Spodnie", "🩲 3x bielizna", "🧦 3x skarpety", "👟 Buty", "🩴 Klapki", "🧥 Kurtka"
       ],
-      "Elektronika": [
-        "Telefon", "Ładowarka", "Powerbank", "Słuchawki"
+      "🔌 Elektronika": [
+        "📱 Telefon", "🔌 Ładowarka", "🔋 Powerbank", "🎧 Słuchawki"
       ],
-      "Higiena": [
-        "Szczoteczka", "Dezodorant", "Żel", "Chusteczki nawilżane", "Chusteczki suche", "Ręcznik", "Maszynka", "Leki"
+      "🧼 Higiena": [
+        "🪥 Szczoteczka", "🧴 Dezodorant", "🚿 Żel", "🧻 Chusteczki nawilżane", "🧻 Chusteczki suche", "🧺 Ręcznik", "🪒 Maszynka", "💊 Leki"
       ],
-      "Dokumenty i kasa": [
-        "Dowód", "Karta", "Bilety", "Hajs"
+      "💳 Dokumenty i kasa": [
+        "🪪 Dowód", "💳 Karta", "🎫 Bilety", "💵 Hajs"
       ],
-      "Inne": [
-        "Plecak", "Butelka", "Guma", "Adres", "Okulary"
+      "🎒 Inne": [
+        "🎒 Plecak", "🚰 Butelka", "🍬 Guma", "📍 Adres", "🕶️ Okulary"
       ],
+      "🛠️ Do zrobienia przed wyjazdem": [
+        "🪒 Ogolić", "🧏‍♂️ Wyczyścić uszy", "⚡ Naładować wszystko", "✅ Posprawdzać wszystko", "🗑️ Wyrzucić śmieci"
+      ]
     };
 
     const checklist = document.getElementById("checklist");
@@ -51,7 +55,7 @@
         if (localStorage.getItem(`cb${i}`) === "1") cb.checked = true;
         cb.onchange = () => localStorage.setItem(`cb${i}`, cb.checked ? "1" : "0");
         label.appendChild(cb);
-        label.appendChild(document.createTextNode(" " + text));
+        label.appendChild(document.createTextNode(text));
         checklist.appendChild(label);
         i++;
       });
