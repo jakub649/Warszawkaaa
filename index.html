@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Warszawkaaa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="manifest.json" />
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    label { display: block; margin: 6px 0; }
+  </style>
+</head>
+<body>
+  <h1>✅ Lista na Warszawę</h1>
+  <div id="checklist"></div>
+
+  <script>
+    const items = [
+      "Dowód", "Karta", "Bilety", "Szczoteczka", "Dezodorant", "Żel", "Chust.N", "Chust.S",
+      "Ręcznik", "Maszynka", "Leki", "2x koszulka", "Bluza", "Spodnie", "3x bielizna", "3x skarpety", "Buty",
+      "Klapki", "Telefon", "Ładowarka", "Powerbank", "Słuchawki", "Plecak", "Butelka", "Guma", "Adres", "Kurtka",
+      "Okulary", "Ogolić", "Uszy", "Naładować wszystko", "Hajs", "Posprawdzać wszystko", "Wyrzucić śmieci"
+    ];
+
+    const div = document.getElementById("checklist");
+    items.forEach((text, i) => {
+      const label = document.createElement("label");
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.id = `cb${i}`;
+      if (localStorage.getItem(`cb${i}`) === "1") cb.checked = true;
+      cb.onchange = () => localStorage.setItem(`cb${i}`, cb.checked ? "1" : "0");
+      label.appendChild(cb);
+      label.appendChild(document.createTextNode(" " + text));
+      div.appendChild(label);
+    });
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
